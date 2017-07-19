@@ -22,17 +22,6 @@ RUN apt-get install -y oracle-java8-installer
 #install editors
 RUN apt-get install -y vim nano
 
-#install mongo
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
-RUN echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.0.list
-RUN apt-get update
-RUN apt-get install -y mongodb-org
-RUN mkdir -p /data/db
-RUN chmod ugo+w /data/db
-RUN /usr/bin/mongod &
-EXPOSE 27017
-EXPOSE 7002
-
 #set up the entry point script
 ADD entry.sh /entry.sh
 RUN chmod +x /entry.sh
@@ -41,6 +30,7 @@ RUN wget https://bintray.com/hmrc/release-candidates/download_file?file_path=uk%
 RUN mkdir /fatjar
 RUN tar xf *.tgz -C /fatjar
 RUN mv /fatjar/help-to-save-stub* /fatjar/help-to-save-stub
+EXPOSE 7002
 
 #Start the container
 ENTRYPOINT ["/entry.sh"]

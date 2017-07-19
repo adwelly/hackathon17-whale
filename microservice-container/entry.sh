@@ -1,8 +1,5 @@
 #!/bin/sh
 
-/usr/bin/mongod &
-
-
 java -Duser.dir=/fatjar/help-to-save-stub \
  -Dapplication.router=testOnlyDoNotUseInAppConf.Routes \
  -Dconfig.resource=application.conf -Xmx256m -Xms64m \
