@@ -31,10 +31,16 @@ RUN mkdir -p /data/db
 RUN chmod ugo+w /data/db
 RUN /usr/bin/mongod &
 EXPOSE 27017
+EXPOSE 7002
 
 #set up the entry point script
 ADD entry.sh /entry.sh
-RUN chmod ugo+x /entry.sh
+RUN chmod +x /entry.sh
+
+RUN wget https://bintray.com/hmrc/release-candidates/download_file?file_path=uk%2Fgov%2Fhmrc%2Fhelp-to-save-stub_2.11%2F0.11.0-1-gf539051%2Fhelp-to-save-stub_2.11-0.11.0-1-gf539051.tgz
+RUN mkdir /fatjar
+RUN tar xf *.tgz -C /fatjar
+RUN mv /fatjar/help-to-save-stub* /fatjar/help-to-save-stub
 
 #Start the container
 ENTRYPOINT ["/entry.sh"]
