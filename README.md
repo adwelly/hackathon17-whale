@@ -8,7 +8,7 @@ $ docker build
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 <none>              <none>              65dbb6844c86        25 minutes ago      1.43 GB
-$ docker run -p: 7002:7002 65db
+$ docker run -p 7002:7002 65db
 ```
 You can test this particular container with a curl command which should return an unauthorized response:
 ```
