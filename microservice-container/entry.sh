@@ -1,13 +1,9 @@
 #!/bin/sh
 
-/usr/bin/mongod &
-
-
 java -Duser.dir=/fatjar/help-to-save-stub \
  -Dapplication.router=testOnlyDoNotUseInAppConf.Routes \
  -Dconfig.resource=application.conf -Xmx256m -Xms64m \
- -DProd.mongodb.uri=mongodb://localhost:27017/help-to-save-stub \
- -Dhttp.port=7002 \
+ -DProd.mongodb.uri=mongodb://mongo:27017/help-to-save-stub \
  -cp '/fatjar/help-to-save-stub/conf:/fatjar/help-to-save-stub/lib/*' \
  play.core.server.ProdServerStart
 
