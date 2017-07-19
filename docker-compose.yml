@@ -5,7 +5,7 @@ services:
     build: microservice-container
     image: help-to-save-stub:0.1
     ports:
-      - "7002:7002"
+      - "7002:9000"
   mongo:
     build: mongo-container
     image: mongo:0.1
