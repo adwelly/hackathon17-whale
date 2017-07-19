@@ -12,6 +12,10 @@ RUN apt-get install -y curl wget
 #install editors
 RUN apt-get install -y vim nano
 
+#prepare for mongo download
+RUN apt-get install -y python-software-properties
+RUN apt-get install -y software-properties-common
+
 #install mongo
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
 RUN echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.0.list
