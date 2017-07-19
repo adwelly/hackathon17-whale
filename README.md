@@ -1,16 +1,20 @@
 # hackathon17-whale
 
-Install a recent version of Docker
+Install a recent version of Docker and docker compose
 
-To build the container (assuming the Docker file and entry script are in directory mvp):
+To build and run the container 
 ```
-$ docker build
+$ docker-compose build
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-<none>              <none>              65dbb6844c86        25 minutes ago      1.43 GB
-$ docker run -p 7002:7002 65db
+mongo               0.1                 38668c5b900b        27 minutes ago      633 MB
+help-to-save-stub   0.1                 2bf5d07d8c39        29 minutes ago      1.21 GB
+ubuntu              16.04               104bec311bcd        7 months ago        129 MB
+ubuntu              latest              104bec311bcd        7 months ago        129 MB
+
+$ docker-compose up
 ```
-You can test this particular container with a curl command which should return an unauthorized response:
+You can test the  help-to-save-container with a curl command which should return an unauthorized response:
 ```
 curl -H "Content-Type: application/json" -v -X POST -d '{}' http://localhost:7002/help-to-save-stub/squid/create-account 
 Note: Unnecessary use of -X or --request, POST is already inferred.
@@ -32,5 +36,9 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 < 
 * Curl_http_done: called premature == 0
 * Connection #0 to host localhost left intact
+```
+You can test the mongo container with an nc command:
+```
+$ nc localhost 27017
 ```
 
